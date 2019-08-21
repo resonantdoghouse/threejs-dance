@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Three.js & Mixamo Dance moves</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<script src="https://testinggrounds.info/share/threejs/three.min.js"></script>
+<script src="https://testinggrounds.info/share/threejs/js/libs/inflate.min.js"></script>
+<script src="https://testinggrounds.info/share/threejs/js/loaders/FBXLoader.js"></script>
+<script src="https://testinggrounds.info/share/threejs/js/controls/OrbitControls.js"></script>
+<script src="https://testinggrounds.info/share/threejs/js/WebGL.js"></script>
+
+<div class="btn-group">
+  <button onClick="javascript:game.toggleAnimation('Chicken Dance')">
+        Chicken Dance
+      </button>
+
+  <button onClick="javascript:game.toggleAnimation('Hip Hop Dancing')">
+        Hip Hop?
+      </button>
+
+  <button onClick="javascript:game.toggleAnimation('Locking Hip Hop Dance')">
+        Locking
+      </button>
+
+  <button onClick="javascript:game.toggleAnimation('Ymca Dance')">
+        YMCA
+      </button>
+
+  <button onClick="javascript:game.toggleAnimation('Idle')">
+        Stop Dancing
+      </button>
+</div>
+  <script  src="./script.js"></script>
+
+</body>
+</html>

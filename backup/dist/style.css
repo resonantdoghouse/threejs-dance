@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+.btn-group {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  cursor: pointer;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.125rem;
+  background: black;
+  border: 1px solid darkgrey;
+  color: white;
+  transition: 0.3s;
+}
+button:hover, button:focus {
+  outline: 0;
+  background: white;
+  color: black;
+  border: 1px solid skyblue;
+}
