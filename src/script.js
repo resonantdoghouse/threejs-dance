@@ -3,7 +3,7 @@ A few updates to change to dance moves with button triggers.
 FBX model and animations from: https://www.mixamo.com
 */
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
   const game = new Game();
   window.game = game; //For debugging only
 });
@@ -23,20 +23,20 @@ class Game {
     this.scene;
     this.renderer;
 
-    this.container = document.createElement("div");
-    this.container.style.height = "100%";
+    this.container = document.createElement('div');
+    this.container.style.height = '100%';
     document.body.appendChild(this.container);
 
     const game = this;
     this.anims = [
-      "Pointing Gesture",
-      "Hip Hop Dancing",
-      "Chicken Dance",
-      "Locking Hip Hop Dance",
-      "Ymca Dance"
+      'Pointing Gesture',
+      'Hip Hop Dancing',
+      'Chicken Dance',
+      'Locking Hip Hop Dance',
+      'Ymca Dance'
     ];
 
-    this.assetsPath = "https://testinggrounds.info/share/";
+    this.assetsPath = 'https://testinggrounds.info/share/';
 
     this.clock = new THREE.Clock();
 
@@ -90,30 +90,53 @@ class Game {
     grid.material.transparent = true;
     this.scene.add(grid);
 
+    // progress bar, fake it till you make it https://blackthread.io/blog/progress-bar/
+    const progressBar = document.getElementById('progress-bar');
+    const onProgress = xhr => {
+      if (xhr.lengthComputable) {
+        let percentComplete = Math.floor((xhr.loaded / xhr.total) * 100);
+        progressBar.innerHTML = `<h2>Loading model...</h2> <p>${percentComplete}%</p>`;
+        if (percentComplete >= 100) {
+          detachElem(progressBar);
+        }
+      }
+    };
+
+    const detachElem = node => {
+      return node.parentElement.removeChild(node);
+    };
+
+    const onError = err => console.log(err);
+
     // model
     const loader = new THREE.FBXLoader();
     const game = this;
 
-    loader.load(`${this.assetsPath}fbx/Knight.fbx`, function(object) {
-      object.mixer = new THREE.AnimationMixer(object);
-      game.player.mixer = object.mixer;
-      game.player.root = object.mixer.getRoot();
+    loader.load(
+      `${this.assetsPath}fbx/Knight.fbx`,
+      function(object) {
+        object.mixer = new THREE.AnimationMixer(object);
+        game.player.mixer = object.mixer;
+        game.player.root = object.mixer.getRoot();
 
-      object.name = "Knight";
+        object.name = 'Knight';
 
-      object.traverse(function(child) {
-        if (child.isMesh) {
-          child.castShadow = true;
-          child.receiveShadow = false;
-        }
-      });
+        object.traverse(function(child) {
+          if (child.isMesh) {
+            child.castShadow = true;
+            child.receiveShadow = false;
+          }
+        });
 
-      game.scene.add(object);
-      game.player.object = object;
-      game.animations.Idle = object.animations[0];
+        game.scene.add(object);
+        game.player.object = object;
+        game.animations.Idle = object.animations[0];
 
-      game.loadNextAnim(loader);
-    });
+        game.loadNextAnim(loader);
+      },
+      onProgress,
+      onError
+    );
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -129,7 +152,7 @@ class Game {
     this.controls.update();
 
     window.addEventListener(
-      "resize",
+      'resize',
       function() {
         game.onWindowResize();
       },
@@ -146,7 +169,7 @@ class Game {
         game.loadNextAnim(loader);
       } else {
         delete game.anims;
-        game.action = "Idle";
+        game.action = 'Idle';
         game.animate();
       }
     });
@@ -171,29 +194,29 @@ class Game {
 
   get action() {
     if (this.player === undefined || this.player.actionName === undefined)
-      return "";
+      return '';
     return this.player.actionName;
   }
 
   toggleAnimation(animName) {
     console.log(animName);
     switch (animName) {
-      case "Idle":
+      case 'Idle':
         game.action = animName;
         break;
-      case "Chicken Dance":
+      case 'Chicken Dance':
         game.action = animName;
         break;
-      case "Pointing Gesture":
+      case 'Pointing Gesture':
         game.action = animName;
         break;
-      case "Hip Hop Dancing":
+      case 'Hip Hop Dancing':
         game.action = animName;
         break;
-      case "Locking Hip Hop Dance":
+      case 'Locking Hip Hop Dance':
         game.action = animName;
         break;
-      case "Ymca Dance":
+      case 'Ymca Dance':
         game.action = animName;
         break;
     }

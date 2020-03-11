@@ -19,14 +19,14 @@
     "del": "^4.1.1",
     "glob": "^7.1.4",
     "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-inject-partials": "^1.0.5",
     "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.13.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1",
-    "gulp-inject-partials": "^1.0.5",
-    "gulp-sass": "^4.0.2",
-    "node-sass": "^4.12.0",
-    "gulp-autoprefixer": "^6.1.0"
+    "webpack-dev-server": "^3.2.1"
   },
   "tasks": {
     "partials": {

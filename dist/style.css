@@ -1,11 +1,15 @@
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 .btn-group {
   position: fixed;
   bottom: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
   justify-content: space-around; }
 
 button {
@@ -16,9 +20,23 @@ button {
   background: black;
   border: 1px solid darkgrey;
   color: white;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s; }
   button:hover, button:focus {
     outline: 0;
     background: white;
     color: black;
     border: 1px solid skyblue; }
+
+.progress-bar {
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.6); }
